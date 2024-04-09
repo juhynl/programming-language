@@ -10,10 +10,10 @@ let rec evalExp (exp: Exp) (mem: Mem) : Val =
   | True -> Bool true
   | False -> Bool false
   | Var x -> 
-    match (Map.tryFind (VarName x) mem).Value with
-    | Int i -> Int i
-    | Bool b -> Bool b
-    | _ -> raise UndefinedSemantics
+     match Map.tryFind (VarName x) mem with
+      | Some (Int i) -> Int i
+      | Some (Bool b) -> Bool b
+      | _ -> raise UndefinedSemantics
   | Add (e1, e2) -> 
     match (evalExp e1 mem, evalExp e2 mem) with
     | (Int i1, Int i2) -> Int (i1 + i2)
@@ -40,8 +40,6 @@ let rec evalExp (exp: Exp) (mem: Mem) : Val =
     | (Int i1, Int i2) -> if (i1 <> i2) then Bool true else Bool false 
     | (Bool b1, Bool b2) -> if (b1 <> b2) then Bool true else Bool false  
     | _ -> raise UndefinedSemantics
-
-// Note: You may define more functions.
 
 // Execute a statement and return the updated memory.
 let rec exec (stmt: Stmt) (mem: Mem) : Mem =
