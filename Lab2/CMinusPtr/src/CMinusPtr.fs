@@ -9,7 +9,6 @@ let rec evalExp (exp: Exp) (mem: Mem) : Val =
   | Num i -> Int i
   | True -> Bool true
   | False -> Bool false
-
   | LV lv ->
     match lv with
     | Var x -> 
@@ -27,9 +26,7 @@ let rec evalExp (exp: Exp) (mem: Mem) : Val =
         | Some (Loc l) -> Loc l
         | _ -> raise UndefinedSemantics
       | _ -> raise UndefinedSemantics
-  
   | AddrOf x -> Loc x
-
   | Add (e1, e2) -> 
     match (evalExp e1 mem, evalExp e2 mem) with
     | (Int i1, Int i2) -> Int (i1 + i2)
@@ -58,9 +55,6 @@ let rec evalExp (exp: Exp) (mem: Mem) : Val =
     | (Bool b1, Bool b2) -> if (b1 <> b2) then Bool true else Bool false 
     | (Loc l1, Loc l2) -> if (l1 <> l2) then Bool true else Bool false 
     | _ -> raise UndefinedSemantics
-
-// Note: You may define more functions.
-
 
 // Execute a statement and return the updated memory.
 let rec exec (stmt: Stmt) (mem: Mem) : Mem =
