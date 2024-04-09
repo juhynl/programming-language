@@ -10,11 +10,10 @@ let rec evalExp (exp: Exp) (mem: Mem) : Val =
   | True -> Bool true
   | False -> Bool false
   | Var x -> 
-    if Map.containsKey (VarName x) mem then 
-      match (Map.tryFind (VarName x) mem).Value with
-      | Int i -> Int i
-      | Bool b -> Bool b
-    else raise UndefinedSemantics
+     match Map.tryFind (VarName x) mem with
+      | Some (Int i) -> Int i
+      | Some (Bool b) -> Bool b
+      | _ -> raise UndefinedSemantics
   | Add (e1, e2) -> 
     match (evalExp e1 mem, evalExp e2 mem) with
     | (Int i1, Int i2) -> Int (i1 + i2)
