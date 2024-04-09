@@ -41,8 +41,6 @@ let rec evalExp (exp: Exp) (mem: Mem) : Val =
     | (Bool b1, Bool b2) -> if (b1 <> b2) then Bool true else Bool false  
     | _ -> raise UndefinedSemantics
 
-// Note: You may define more functions.
-
 // Execute a statement and return the updated memory.
 let rec exec (stmt: Stmt) (mem: Mem) : Mem =
   match stmt with
