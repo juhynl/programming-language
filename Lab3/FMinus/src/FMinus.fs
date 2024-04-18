@@ -35,6 +35,8 @@ let rec evalExp (exp: Exp) (env: Env) : Val =
     | (Int i1, Int i2) -> if i1 = i2 then Bool false else Bool true
     | (Bool b1, Bool b2) -> if b1 = b2 then Bool false else Bool true
     | _ -> raise UndefinedSemantics 
+  | IfThenElse(e1, e2, e3) ->
+    if e1 then evalExp e2 env else evalExp e3 env
   | _ -> raise // TODO: fill in the remaining cases.
 
 // Note: You may define more functions.
