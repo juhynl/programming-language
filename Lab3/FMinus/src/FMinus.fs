@@ -25,6 +25,16 @@ let rec evalExp (exp: Exp) (env: Env) : Val =
     match (evalExp e1 env, evalExp e2 env) with
     | (Int i1, Int i2) -> if i1 > i2 then Bool true else Bool false
     | _ -> raise UndefinedSemantics  
+  | Equal(e1, e2) ->
+    match (evalExp e1 env, evalExp e2 env) with
+    | (Int i1, Int i2) -> if i1 = i2 then Bool true else Bool false
+    | (Bool b1, Bool b2) -> if b1 = b2 then Bool true else Bool false
+    | _ -> raise UndefinedSemantics 
+  | NotEq(e1, e2) ->
+    match (evalExp e1 env, evalExp e2 env) with
+    | (Int i1, Int i2) -> if i1 = i2 then Bool false else Bool true
+    | (Bool b1, Bool b2) -> if b1 = b2 then Bool false else Bool true
+    | _ -> raise UndefinedSemantics 
   | _ -> raise // TODO: fill in the remaining cases.
 
 // Note: You may define more functions.
