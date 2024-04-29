@@ -13,6 +13,10 @@ let rec evalExp (exp: Exp) (env: Env) : Val =
     match Map.tryFind (VarName x) env with
     | Some v -> v
     | None -> raise UndefinedSemantics
+  | Neg e ->
+    match evalExp e env with
+    | Int n -> Int -n
+    | _ -> raise UndefinedSemantics
   | Add(e1, e2) -> 
     match (evalExp e1 env, evalExp e2 env) with
     | (Int i1, Int i2) -> Int (i1 + i2)
