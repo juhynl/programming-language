@@ -47,21 +47,24 @@ let rec evalExp (exp: Exp) (env: Env) : Val =
     match evalExp e1 env with
     | Bool b -> if b then evalExp e2 env else evalExp e3 env
     | _ -> raise UndefinedSemantics
-  | LetIn(x, e1, e2) ->
-    evalExp e2 (Map.add x (evalExp e1 env) env)
-  // | LetFunIn(f, x, e1, e2) ->
-  //   evalExp e2 (Map.add f Func(x, e1, env) env)
-  // | LetRecIn(f, x, e1, e2) ->
-  //   evalExp e2 (Map.add f RecFunc(f, x, e1, env) env)
-  // | Fun(x, e) -> Func(x, e, env)
-  // | App(e1, e2) ->
-  //   match env.TryFind (evalExp e1) with
-  //   | Func(x, e, env) -> 
-  //   | RecFunc(f, x, e, env) ->  
-
-  | _ -> raise UndefinedSemantics// TODO: fill in the remaining cases.
-
-// Note: You may define more functions.
+  | LetIn(x, e1, e2) -> evalExp e2 (Map.add x (evalExp e1 env) env)
+  | LetFunIn(f, x, e1, e2) -> evalExp e2 (Map.add f (Func(x, e1, env)) env)
+  | LetRecIn(f, x, e1, e2) -> evalExp e2 (Map.add f (RecFunc(f, x, e1, env)) env)
+  | Fun(x, e) -> Func(x, e, env)
+  | App(e1, e2) ->
+    let val_e1 = evalExp e1 env
+    let v_arg = evalExp e2 env
+    match val_e1 with
+    | Func(x, exp, env_new) -> 
+      let env_new = env_new 
+                      |> Map.add x v_arg
+      evalExp exp env_new
+    | RecFunc(f, x, exp, env_new) ->
+      let env_new = env_new 
+                      |> Map.add x v_arg
+                      |> Map.add f (RecFunc(f, x, exp, env))
+      evalExp exp env_new
+    | _ -> raise UndefinedSemantics
 
 // The program starts execution with an empty environment. Do not fix this code.
 let run (prog: Program) : Val =
