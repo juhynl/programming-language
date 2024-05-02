@@ -37,8 +37,6 @@
 
 ## C- with Pointer
 
-![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/Lab2/assets/Untitled%205.png)
-
 ### Syntax
 
 ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/Lab2/assets/Untitled%206.png)
