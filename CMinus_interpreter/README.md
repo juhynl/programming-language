@@ -17,43 +17,43 @@
 
 ### Syntax
 
-![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/Lab2/assets/Untitled.png)
+![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/CMinus_interpreter/assets/Untitled.png)
 
 ### Semantics
 
 - Expression
     
-    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/Lab2/assets/Untitled%201.png)
+    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/CMinus_interpreter/assets/Untitled%201.png)
     
-    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/Lab2/assets/Untitled%202.png)
+    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/CMinus_interpreter/assets/Untitled%202.png)
     
 
 - Statement
     
-    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/Lab2/assets/Untitled%203.png)
+    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/CMinus_interpreter/assets/Untitled%203.png)
     
 
-![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/Lab2/assets/Untitled%204.png)
+![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/CMinus_interpreter/assets/Untitled%204.png)
 
 ## C- with Pointer
 
 ### Syntax
 
-![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/Lab2/assets/Untitled%206.png)
+![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/CMinus_interpreter/assets/Untitled%206.png)
 
 ### Semantics
 
 - Expression
     
-    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/Lab2/assets/Untitled%207.png)
+    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/CMinus_interpreter/assets/Untitled%207.png)
     
-    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/Lab2/assets/Untitled%208.png)
+    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/CMinus_interpreter/assets/Untitled%208.png)
     
-    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/Lab2/assets/Untitled%209.png)
+    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/CMinus_interpreter/assets/Untitled%209.png)
     
 
-![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/Lab2/assets/Untitled%2010.png)
+![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/CMinus_interpreter/assets/Untitled%2010.png)
 
 - Statement
     
-    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/Lab2/assets/Untitled%2011.png)
+    ![Untitled](https://github.com/juhynl/programming-language/blob/feat-modify-docs/CMinus_interpreter/assets/Untitled%2011.png)
