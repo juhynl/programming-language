@@ -48,7 +48,6 @@ module Type =
       | Add(e1, e2) | Sub(e1, e2) -> (typ, Int) :: gen typenv e1 Int @ gen typenv e2 Int
       | LessThan(e1, e2) | GreaterThan(e1, e2) -> (typ, Bool) :: gen typenv e1 Int @ gen typenv e2 Int
       | Equal(e1, e2) | NotEq(e1, e2) -> 
-        // let newTyVar = genTyVar()
         let newTyVar = genIorBTyVar()
         (typ, Bool) :: gen typenv e1 newTyVar @ gen typenv e2 newTyVar
       | IfThenElse(e1, e2, e3) -> gen typenv e1 Bool @ gen typenv e2 typ @ gen typenv e3 typ
@@ -106,15 +105,12 @@ module Type =
       | _ -> raise TypeError
     
     let rec solveEqns (eqns: list<Type * Type>) (subst: Map<string, Type>): Map<string, Type> =
-      // List.iter (fun (t1, t2) -> printfn "(%A, %A)" t1 t2) (Map.toList subst)
-      // printfn "====\n"
       match eqns with
       | [] -> subst
       | (t1, t2) :: tail -> solveEqns tail (unify t1 t2 subst)
     
     let checkIorBVal (subst: Map<string, Type>) =
       for n in 0 .. !numIorBTyVar do
-        // printfn $"{n}"
         let tyvar = "iorb" + string n
         let typ = tryFind tyvar subst
         match typ with
@@ -123,8 +119,6 @@ module Type =
 
     let tyvar = genTyVar()
     let eqns = gen Map.empty<string, Type> prog tyvar
-    // List.iter (fun (x, y) -> printfn "%A %A" x y) eqns
     let subst = solveEqns eqns Map.empty<string, Type>
-    // printfn "checkIorBVal"
     checkIorBVal subst
     app subst tyvar
