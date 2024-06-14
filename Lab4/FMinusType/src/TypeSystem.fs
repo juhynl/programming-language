@@ -34,10 +34,10 @@ module Type =
       numTyVar := !numTyVar + 1
       TyVar ("t" + string !numTyVar)
     
-    // let numIorBTyVar = ref -1
-    // let genIorBTyVar (): Type =
-    //   numIorBTyVar := !numIorBTyVar + 1
-    //   TyVar ("iorb" + string !numIorBTyVar)
+    let numIorBTyVar = ref -1
+    let genIorBTyVar (): Type =
+      numIorBTyVar := !numIorBTyVar + 1
+      TyVar ("iorb" + string !numIorBTyVar)
 
     let rec gen (typenv: TypeEnv) (exp: Exp) (typ: Type): list<Type * Type> =
       match exp with
@@ -48,7 +48,8 @@ module Type =
       | Add(e1, e2) | Sub(e1, e2) -> (typ, Int) :: gen typenv e1 Int @ gen typenv e2 Int
       | LessThan(e1, e2) | GreaterThan(e1, e2) -> (typ, Bool) :: gen typenv e1 Int @ gen typenv e2 Int
       | Equal(e1, e2) | NotEq(e1, e2) -> 
-        let newTyVar = genTyVar()
+        // let newTyVar = genTyVar()
+        let newTyVar = genIorBTyVar()
         (typ, Bool) :: gen typenv e1 newTyVar @ gen typenv e2 newTyVar
       | IfThenElse(e1, e2, e3) -> gen typenv e1 Bool @ gen typenv e2 typ @ gen typenv e3 typ
       | LetIn(x, e1, e2) -> 
@@ -111,7 +112,19 @@ module Type =
       | [] -> subst
       | (t1, t2) :: tail -> solveEqns tail (unify t1 t2 subst)
     
+    let checkIorBVal (subst: Map<string, Type>) =
+      for n in 0 .. !numIorBTyVar do
+        // printfn $"{n}"
+        let tyvar = "iorb" + string n
+        let typ = tryFind tyvar subst
+        match typ with
+        | Func(_, _) | TyVar _ -> raise TypeError
+        | _ -> ()
+
     let tyvar = genTyVar()
     let eqns = gen Map.empty<string, Type> prog tyvar
+    // List.iter (fun (x, y) -> printfn "%A %A" x y) eqns
     let subst = solveEqns eqns Map.empty<string, Type>
+    // printfn "checkIorBVal"
+    checkIorBVal subst
     app subst tyvar
