@@ -17,6 +17,21 @@ def print_instruction() -> None:
         - Enter \"s\" to perform type inference.\n \
         - Enter \"x\" to exit the program.")
     print("============================================================")
+    
+def build() -> bool:
+    """Build the type inference program.
+
+    Returns:
+        bool: build result.
+    """
+    try:
+        orig_cwd = os.getcwd()
+        os.chdir(path.join(ROOT_DIR))
+        run_cmd("dotnet build -o %s" % BUILD_DIRNAME)
+        os.chdir(orig_cwd)
+        return True
+    except Exception as e:
+        return False
 
 def read_config(config: str) -> int:
     """Read the ID of the current type inference from the config file and return the id.
@@ -127,4 +142,7 @@ if __name__ == "__main__":
     print("============================================================")
     print("FMinus Type Inference")
     print("============================================================")
-    main()
+    if build():
+        main()
+    else:
+        print("Build Failed!")
