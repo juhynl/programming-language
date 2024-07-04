@@ -142,7 +142,11 @@ if __name__ == "__main__":
     print("============================================================")
     print("FMinus Type Inference")
     print("============================================================")
-    if build():
+    print("Building the program. Please wait...")
+    build_success = build()
+    print("Done!")
+    print("============================================================")
+    if build_success:
         main()
     else:
         print("Build Failed!")
