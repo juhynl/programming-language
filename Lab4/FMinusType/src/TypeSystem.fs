@@ -86,6 +86,12 @@ module Type =
       let newSubst = Map.empty<string, Type> |> Map.add typvar typ
       let replacedSubst =  Map.map (fun tv t -> app newSubst t) subst
       Map.add typvar typ replacedSubst
+    
+    let rec checkOccur (s: string) (t: Type): bool =
+      match t with
+      | Int | Bool -> false
+      | TyVar t_ -> if s = t_ then true else false
+      | Func(t1, t2) -> checkOccur s t1 || checkOccur s t2
 
     let rec unify (t1: Type) (t2: Type) (subst: Map<string, Type>): Map<string, Type> = 
       extend (app subst t1) (app subst t2) subst
@@ -94,14 +100,14 @@ module Type =
       match (t1, t2) with
       | (Int, Int) | (Bool, Bool) -> subst
       | (Func(tx, ty), Func(tx1, ty1)) -> unify ty ty1 (extend tx tx1 subst)
-      | (TyVar s, typ) ->
-        match typ with
-        | TyVar s1 -> if s = s1 then subst else replace subst s typ
-        | Int | Bool -> replace subst s typ
+      | (TyVar s, t) ->
+        match t with
+        | TyVar s1 -> if s = s1 then subst else replace subst s t
+        | Int | Bool -> replace subst s t
         | Func(t1, t2) -> 
-          if t1 = TyVar s || t2 = TyVar s then raise TypeError 
-          else replace subst s (Func(t1, t2))
-      | (typ, TyVar s) -> extend (TyVar s) typ subst
+          if checkOccur s t then raise TypeError 
+          else replace subst s t
+      | (t, TyVar s) -> extend (TyVar s) t subst
       | _ -> raise TypeError
     
     let rec solveEqns (eqns: list<Type * Type>) (subst: Map<string, Type>): Map<string, Type> =
