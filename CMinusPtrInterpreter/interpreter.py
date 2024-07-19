@@ -14,7 +14,7 @@ def print_instruction() -> None:
     """Print instruction for users.
     """
     print("Please enter a target program:\n \
-        - Put a semicolon \';\' between each statement.\n \
+        - Put a semicolon (;) between each statement.\n \
         - Do not put a semicolon (;) at the end of the program.\n \
         - Enter \"x\" to exit the program.")
     print("============================================================")
