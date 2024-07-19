@@ -1,0 +1,10 @@
+result: {
+  x -> 1
+  y -> 3
+}
+
+program:
+
+x = 1;
+y = x + 2
+

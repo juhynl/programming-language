@@ -1,0 +1,20 @@
+result: {
+  x -> 15
+  y -> 5
+  z -> 10
+}
+
+program:
+x = 15;
+if (x > 10) {
+  y = 1;
+} else {
+  y = 2;
+};
+if (x > 20) {
+  y = y + 3;
+} else {
+  y = y + 4;
+};
+z = x - y
+
