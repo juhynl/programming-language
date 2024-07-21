@@ -27,6 +27,16 @@ Please enter a target program:
          - Enter ":start" to perform type inference.
          - Enter ":exit" to exit the program.
 ============================================================
+fun x -> (fun y -> x + y)
+:start
+------------------------------------------------------------
+result: (int) -> ((int) -> (int))
+============================================================
+Please enter a target program:
+         - Enter ":start" to perform type inference.
+         - Enter ":exit" to exit the program.
+============================================================
+:exit
 ```
 FMinusType.py saves inferred programs and results in the 'log' directory.
 
