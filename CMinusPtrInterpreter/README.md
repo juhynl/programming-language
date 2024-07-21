@@ -35,6 +35,12 @@ result: {
   y -> 2
 }
 ============================================================
+Please enter a target program:
+         - Put a semicolon (;) between each statement.
+         - Do not put a semicolon (;) at the end of the program.
+         - Enter ":exit" to exit the program.
+============================================================
+:exit
 ```
 interpreter.py saves interpreted programs and results in the 'log' directory.
 
