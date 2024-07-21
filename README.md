@@ -1,5 +1,5 @@
 # Programming Language
-This repository contains the lab assignments for CSE4050 (Programming Languages) at Sogang University, 2024
+This repository contains the lab assignments for CSE4050 (Programming Languages) at Sogang University, 2024.
 
 ## Prerequisite
 * .NET is required
