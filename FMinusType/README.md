@@ -7,15 +7,15 @@ This directory contains a program that provides a type system for F- language.
 If you want to install .NET on Linux, please refer to the following [link]. 
 
 ## Usage
-Run FMinusType.py.
+Run type_system.py.
 ```
-python3 FMinusType.py
+python3 type_system.py
 ```
 First, input the program code which you want to perform type inference. 
 
-Then press s to execute the type inference. 
+Then enter ":start" to execute the type inference. 
 
-To exit the type inference program, input 'x'.
+To exit the type inference program, enter ":exit".
 ```
 ============================================================
 FMinus Type Inference
@@ -24,8 +24,8 @@ Building the program. Please wait...
 Done!
 ============================================================
 Please enter a target program:
-         - Enter "s" to perform type inference.
-         - Enter "x" to exit the program.
+         - Enter ":start" to perform type inference.
+         - Enter ":exit" to exit the program.
 ============================================================
 ```
 FMinusType.py saves inferred programs and results in the 'log' directory.
