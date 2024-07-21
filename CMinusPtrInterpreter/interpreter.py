@@ -16,7 +16,7 @@ def print_instruction() -> None:
     print("Please enter a target program:\n \
         - Put a semicolon (;) between each statement.\n \
         - Do not put a semicolon (;) at the end of the program.\n \
-        - Enter \"x\" to exit the program.")
+        - Enter \":exit\" to exit the program.")
     print("============================================================")
     
 def build() -> bool:
@@ -127,13 +127,13 @@ def main() -> None:
         log_file = path.join(ROOT_DIR, LOG_DIRNAME, LOG_FILE + str(log_id))
         with open(log_temp, "a") as f:
             line = input()
-            while line !=  "x":
+            while line !=  ":exit":
                 f.write(line + "\n")
                 if is_end_of_program(line):
                     break
                 line = input()
             
-        if line != "x":
+        if line != ":exit":
             binary = path.join(ROOT_DIR, BUILD_DIRNAME, "CMinusPtr")
             output = infer(binary, log_temp)
             if output is not None:

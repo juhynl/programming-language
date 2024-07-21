@@ -14,8 +14,8 @@ def print_instruction() -> None:
     """Print instruction for users.
     """
     print("Please enter a target program:\n \
-        - Enter \"s\" to perform type inference.\n \
-        - Enter \"x\" to exit the program.")
+        - Enter \":start\" to perform type inference.\n \
+        - Enter \":exit\" to exit the program.")
     print("============================================================")
     
 def build() -> bool:
@@ -120,11 +120,11 @@ def main() -> None:
         log_file = path.join(ROOT_DIR, LOG_DIRNAME, LOG_FILE + str(log_id))
         with open(log_temp, "a") as f:
             line = input()
-            while line != "s" and line !=  "x":
+            while line != ":start" and line !=  ":exit":
                 f.write(line + "\n")
                 line = input()
             
-        if line == "s":
+        if line == ":start":
             binary = path.join(ROOT_DIR, BUILD_DIRNAME, "FMinusType")
             output = infer(binary, log_temp)
             if output is not None:
@@ -133,7 +133,7 @@ def main() -> None:
                 print("============================================================")
                 save_output(log_file, log_temp, output)
                 log_id += 1
-        elif line == "x":
+        elif line == ":exit":
             with open(log_config, 'w') as f:
                 f.write(str(log_id))
             break
