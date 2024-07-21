@@ -1,5 +1,5 @@
 # CMinusPtrInterpreter
-This directory contains a interpreter that provides a pointer operations for F- language.
+This directory contains a interpreter for C- language with a pointer operations.
 ## Usage
 Run interpreter.py.
 ```
