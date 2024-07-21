@@ -1,5 +1,5 @@
-# CMinusPtrInterpreter
-This directory contains a interpreter for C- language.
+# FMinusPtrInterpreter
+This directory contains a interpreter for F- language.
 ## Usage
 Run interpreter.py.
 ```
