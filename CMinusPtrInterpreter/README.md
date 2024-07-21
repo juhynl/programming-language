@@ -9,7 +9,7 @@ First, enter the program code into the interpreter.
 * Put a semicolon (;) between each statement.
 * Do not put a semicolon (;) at the end of the program.
 
-To exit the type inference program, input 'x'.
+To exit the type inference program, enter ":exit".
 ```
 ============================================================
 CMinusPtr Interpreter
@@ -20,7 +20,7 @@ Done!
 Please enter a target program:
          - Put a semicolon (;) between each statement.
          - Do not put a semicolon (;) at the end of the program.
-         - Enter "x" to exit the program.
+         - Enter ":exit" to exit the program.
 ============================================================
 x = 1;
 y = 2;
